@@ -1,1 +1,40 @@
 @import "tailwindcss";
+#root,html{
+    scroll-behavior: smooth;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+background: linear-gradient(0deg, rgba(44, 51, 40, 1.000) 0.000%, rgba(0, 0, 0, 1.000) 50.000%, rgba(0, 0, 0, 1.000) 100.000%);}
+::selection{
+    background: none;
+    color: #eb54a4;
+}
+.h2-content::before,.h3-content::before{
+    color: oklch(50% 0.134 242.749);
+        margin-right: 4px;
+}
+.h2-content::before{
+        content: '##';
+}
+ .h3-content::before{
+    content: '###';
+
+}
+.link-content{
+    border-bottom: #eb54a4 solid 1px;
+}
+.link-content::hover{
+    border-bottom: #eb54a4 solid 1px;
+    transition: all 0.3ms ease;
+    color: oklch(50% 0.134 242.749);
+}
+.span-block{
+    background-color: rgb(73, 70, 70);
+    padding: 4px;
+    border-radius: 4px;
+}
+h2{font-size: 1.5rem;}
+h3{font-size: 1.17em}
+pre{border-radius: 8px; border: solid 1px #cecbcb;}
