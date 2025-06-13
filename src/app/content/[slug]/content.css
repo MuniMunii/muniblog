@@ -1,0 +1,29 @@
+.content-blog h2{font-size: 1.5rem;}
+.content-blog h3{font-size: 1.17em}
+.content-blog h2,.content-blog h3{
+    margin-top: 12px;
+    width: fit-content;
+    border-bottom:oklch(50% 0.134 242.749) solid 3px ;
+}
+.content-blog a:not(.except){
+    border-bottom: #eb54a4 solid 2px;
+}
+.content-blog ol{
+    margin-left:32px;
+}
+.content-blog ol>li{
+    list-style: decimal;
+}
+.content-blog code:not(pre code) {
+    background-color: rgb(73, 70, 70);
+    padding: 4px;
+    border-radius: 4px;
+}
+.content-blog h2::before{
+    content: '##';
+    margin-right: 6px;
+}
+.content-blog h3::before{
+    content: "###";
+    margin-right: 6px;
+}

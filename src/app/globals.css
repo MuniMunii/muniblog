@@ -24,3 +24,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+pre{
+  border:white solid 1px;
+  border-radius: 8px;
+  word-break: break-all;
+  white-space: pre-wrap;
+  padding: 6px 0 6px 12px
+}
+::selection{
+    background: none;
+    color: #eb54a4;
+}
