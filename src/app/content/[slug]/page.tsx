@@ -1,14 +1,21 @@
-"use server";
-import { ContentData } from "@/app/contentData";
+// "use server";
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import path from "path";
 import fs from "fs";
-import './content.css'
-export async function generateStaticParam() {
-  return ContentData.map((content) => ({
-    slug: content.slug,
-  }));
+import "./content.css";
+import dynamic from "next/dynamic";
+import { getPost } from "@/app/lib/mdx";
+import { Metadata } from "next";
+const Video=dynamic(()=>import('@/app/content/[slug]/media').then((m)=>m.Video),{ssr:true})
+const OptimizedImage=dynamic(()=>import('@/app/content/[slug]/media').then((m)=>m.OptimizedImage),{ssr:true})
+
+export async function generateMetadata({params}:{params:{slug:string}}):Promise<Metadata>{
+  const post =await getPost(params.slug)
+  return {
+    title:post?.frontmatter.title ?? "MuniBlog",
+    description:post.frontmatter.metaTag
+  }
 }
 export default async function ContentPage({
   params,
@@ -22,19 +29,30 @@ export default async function ContentPage({
   );
   if (!fs.existsSync(filePath)) return notFound();
   const source = fs.readFileSync(filePath, "utf8");
-  const { content, frontmatter } = await compileMDX({
+  const { content, frontmatter } = await compileMDX<contentProps>({
     source,
+    components:{
+      Video,OptimizedImage
+    },
     options: {
       parseFrontmatter: true,
       mdxOptions: {
         rehypePlugins: [
           [
             (await import("rehype-pretty-code")).default,
-            { theme: "kanagawa-wave" }
+            { theme: "kanagawa-wave" },
           ],
         ],
       },
     },
   });
-  return <main className="content-blog leading-8 max-w-[800px] w-full p-4 mt-12 mx-auto"><section>{content}</section></main>;
+  return (
+    <main className="content-blog leading-8 max-w-[800px] w-full mt-4 mx-auto">
+      <section>
+        <h1 className="text-4xl text-center">{frontmatter.title}</h1>
+        <OptimizedImage alt={frontmatter.thumbnail_alt} src={frontmatter.thumbnail} height={300} width={600} priority quality={100} className="rounded-md mx-auto my-3"/>
+        {content}
+      </section>
+    </main>
+  );
 }

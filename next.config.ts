@@ -16,6 +16,7 @@ const mdxConfig=withMDX({
 })
 const nextConfig: NextConfig = {
   /* config options here */ 
+  images:{domains:['res.cloudinary.com']},
   pageExtensions:['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
 };
 export default mdxConfig(nextConfig)

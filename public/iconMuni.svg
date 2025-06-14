@@ -1,0 +1,7 @@
+<!-- /public/favicon.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#1A1A1A"/>
+  <text x="50%" y="50%" font-size="36" font-family="Outfit, sans-serif" fill="#00BFFF" text-anchor="middle" dominant-baseline="central">
+    M
+  </text>
+</svg>

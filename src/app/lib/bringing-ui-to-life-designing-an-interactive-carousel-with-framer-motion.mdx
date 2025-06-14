@@ -2,15 +2,17 @@
 id: '1'
 metaTag: 'meta description for blog1'
 slug: 'bringing-ui-to-life-designing-an-interactive-carousel-with-framer-motion'
+thumbnail: 'https://res.cloudinary.com/duyurqj38/image/upload/f_auto,q_auto/v1/muniblog/blog_motion/thumbnail_blog1'
+thumbnail_alt: 'Interactive_Carousel_Using_motion'
 title: 'Bringing UI to Life: Designing an Interactive Carousel with Framer Motion'
 ---
-
-# Membangun Carousel dengan Framer Motion: Pengalaman dan Tutorial
 
 Dalam dunia pengembangan frontend, animasi pada antarmuka pengguna (UI) bukan lagi hal yang asing dari transisi yang halus saat berpindah halaman, hingga efek-efek interaktif yang membuat pengalaman pengguna terasa lebih hidup, animasi sudah menjadi bagian penting dalam desain modern dan terlebih lagi di era AI dan "Vibe Coding" yang memetingkan kecepatan, dan karena itu masih banyak developer terutama yang baru belajar tentang pengembangan website yang sering melupakan tentang performa website/aplikasi. Karena itu saya ingin mengenalkan Framer-Motion dari pengalaman saya membangun carousel menggunakan Framer-Motion.
 
 Sedikit cerita, sekitar setahun yang lalu saya pernah membuat website yang bertujuan sangat bergantung pada animasi, tetapi saya belum mengenal tentang library animation jadi saya hanya menggunakan hook seperti useState, useEffect dan Asynchronous (setTimeout, setInterval). tetapi animasinya sangat clunky, dan tidak smooth. setelah menyadari itu saya mulai mencari dan belajar tentang library animasi terutama component carousel seperti Swiper.js, namun sayangnya saya menemui kendala performa seperti skor LCP (Largest Contentful Paint) yang menurun, nested slide dan fitur Lazy loading nya yang kurang optimal. Setelah melalui banyak pencarian akhirnya saya menemukan sebuah library animasi React yang menurut saya sesuai untuk kebutuhan saya yaitu Framer-motion. Nah di blog ini saya akan membagi pengalaman saya membuat carousel menggunakan Framer-motion yang tidak hanya smooth secara visual, tapi juga efisien secara performa.
-
+<OptimizedImage src="https://res.cloudinary.com/duyurqj38/image/upload/f_auto,q_auto/v1/muniblog/blog_motion/performance_pjsk" alt="Performance_image" className={"mx-auto block rounded-md"}/>
+<Video src="https://res.cloudinary.com/duyurqj38/video/upload/f_auto:video,q_auto/v1/muniblog/blog_motion/demo_carousel" alt="Demo_Video_Interactive_Carousel" className={"mx-auto"}/>
+Jika ingin melihat langsung/testing [Carousel Website](https://www.munisekai-v2.vercel.app)
 ## Setting up Framer-motion
 
 Untuk mensetup Framer-motion di project react, pertama harus menginstall Framer-motion di syntax dibawah ini.
@@ -35,6 +37,7 @@ Tools dan bahasa yang saya pakai adalah Tailwind dan Typescript
 
 Yang pertama saya membuat component untuk image. component ini bertujuan mengambil gambar yang sudah kita masukan ke cloudinary dan panggil gambar ke dalam img element
 
+**ImageOptimization.tsx**
 ```tsx
 import { Cloudinary } from '@cloudinary/url-gen/index';
 import { byAngle } from '@cloudinary/url-gen/actions/rotate';
@@ -44,7 +47,7 @@ import { useEffect, useState } from 'react';
 type QualityProps = 'auto' | 'low' | 'medium' | 'high' | 'best' | number;
 
 const cld = new Cloudinary({
-  cloud: { cloudName: import.meta.env.VITE_CLOUDNAME } // cloudname from cloudinary
+  cloud: { cloudName: import.meta.env.VITE_CLOUDNAME } // cloudname from cloudinary/ganti dengan duyurqj38 sesuai dengan data
 });
 
 export function ImageOptimization({

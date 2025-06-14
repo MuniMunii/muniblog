@@ -1,12 +1,19 @@
 
-import { getAllPost, getPost } from "./lib/mdx";
+import { getAllPost } from "./lib/mdx";
 import ListContent from "./component/ListContent";
-import Navbar from "./component/navbar";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Home | MuniBlog",
+  description: "Learn more about frontend, Here in Muniblog we can share experience",
+  icons:{
+    icon: "/iconMuni.svg",
+  },
+};
 export default function Home() {
   const getContent=getAllPost()
     return (
       <>
-        <div className="size-full min-h-screen flex flex-col items-center pt-12 gap-4">
+        <div className="size-full min-h-screen flex flex-col items-center mt-3 gap-4">
           <div><ListContent content={getContent}/></div>
         </div>
       </>
