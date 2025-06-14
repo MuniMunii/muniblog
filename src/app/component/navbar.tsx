@@ -36,7 +36,7 @@ export default function Navbar() {
             animate={{ x: indicator.x, width: indicator.width }}
             className={`absolute bg-blue-400 h-full rounded-md`}
           />
-          {navList.map((link, index) => {
+          {navList.map((link) => {
             const isActive = pathName === link.href;
             return (
               <Link
