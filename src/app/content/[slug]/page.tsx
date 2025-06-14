@@ -20,12 +20,13 @@ export async function generateMetadata({params}:{params:{slug:string}}):Promise<
 export default async function ContentPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const slug=(await params).slug
   const filePath = path.join(
     process.cwd(),
     "src/app/lib",
-    `${params.slug}.mdx`
+    `${slug}.mdx`
   );
   if (!fs.existsSync(filePath)) return notFound();
   const source = fs.readFileSync(filePath, "utf8");
