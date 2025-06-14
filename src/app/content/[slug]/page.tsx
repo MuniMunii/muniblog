@@ -7,12 +7,11 @@ import "./content.css";
 import dynamic from "next/dynamic";
 import { getPost } from "@/app/lib/mdx";
 import { Metadata } from "next";
-import {use}from "react"
 const Video=dynamic(()=>import('@/app/content/[slug]/media').then((m)=>m.Video),{ssr:true})
 const OptimizedImage=dynamic(()=>import('@/app/content/[slug]/media').then((m)=>m.OptimizedImage),{ssr:true})
 
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
-  const slug=use(params).slug
+  const {slug}=await params
   const post =await getPost(slug)
   return {
     title:post?.frontmatter.title ?? "MuniBlog",
@@ -24,7 +23,7 @@ export default async function ContentPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const slug=use(params).slug
+  const {slug}=await params
   const filePath = path.join(
     process.cwd(),
     "src/app/lib",
