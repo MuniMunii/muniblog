@@ -1,5 +1,5 @@
 "use client";
-import React, { CSSProperties, useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState } from "react";
 // import { Link } from "react-router-dom";;
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
