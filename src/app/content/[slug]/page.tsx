@@ -4,13 +4,20 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import path from "path";
 import fs from "fs";
 import "./content.css";
-import dynamic from "next/dynamic";
-import { getPost } from "@/app/lib/mdx";
+import dynamicImport from "next/dynamic";
+import { getAllPost, getPost } from "@/app/lib/mdx";
 import { Metadata } from "next";
-const Video=dynamic(()=>import('@/app/content/[slug]/media').then((m)=>m.Video),{ssr:true})
-const OptimizedImage=dynamic(()=>import('@/app/content/[slug]/media').then((m)=>m.OptimizedImage),{ssr:true})
-
+import RevealContent from "./reveal_content";
+import GiscusComp from "./giscus_comp";
+const Video=dynamicImport(()=>import('@/app/lib/media').then((m)=>m.Video),{ssr:true})
+const OptimizedImage=dynamicImport(()=>import('@/app/lib/media').then((m)=>m.OptimizedImage),{ssr:true})
+export const dynamic = "force-static";
+export async function generateStaticParams(){
+  const slugs=await getAllPost()
+  return slugs.map(slug=>({slug:slug.slug}))
+}
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
+
   const {slug}=await params
   const post =await getPost(slug)
   return {
@@ -49,12 +56,15 @@ export default async function ContentPage({
     },
   });
   return (
-    <main className="content-blog leading-8 max-w-[800px] w-full mt-4 mx-auto">
+    <main className="content-blog leading-8 max-w-[800px] w-[90%] mt-4 mx-auto">
+      <article>
       <section>
         <h1 className="text-4xl text-center">{frontmatter.title}</h1>
         <OptimizedImage alt={frontmatter.thumbnail_alt} src={frontmatter.thumbnail} height={300} width={600} priority quality={100} className="rounded-md mx-auto my-3"/>
-        {content}
+        <RevealContent content={content}/>
       </section>
+      </article>
+      <GiscusComp/>
     </main>
   );
 }

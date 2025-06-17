@@ -2,6 +2,7 @@
 id: '1'
 metaTag: 'meta description for blog1'
 slug: 'bringing-ui-to-life-designing-an-interactive-carousel-with-framer-motion'
+description: ' di blog ini saya akan membagi pengalaman membuat carousel menggunakan Framer-motion yang tidak hanya smooth secara visual, tapi juga efisien secara performa.'
 thumbnail: 'https://res.cloudinary.com/duyurqj38/image/upload/f_auto,q_auto/v1/muniblog/blog_motion/thumbnail_blog1'
 thumbnail_alt: 'Interactive_Carousel_Using_motion'
 title: 'Bringing UI to Life: Designing an Interactive Carousel with Framer Motion'
@@ -9,7 +10,7 @@ title: 'Bringing UI to Life: Designing an Interactive Carousel with Framer Motio
 
 Dalam dunia pengembangan frontend, animasi pada antarmuka pengguna (UI) bukan lagi hal yang asing dari transisi yang halus saat berpindah halaman, hingga efek-efek interaktif yang membuat pengalaman pengguna terasa lebih hidup, animasi sudah menjadi bagian penting dalam desain modern dan terlebih lagi di era AI dan "Vibe Coding" yang memetingkan kecepatan, dan karena itu masih banyak developer terutama yang baru belajar tentang pengembangan website yang sering melupakan tentang performa website/aplikasi. Karena itu saya ingin mengenalkan Framer-Motion dari pengalaman saya membangun carousel menggunakan Framer-Motion.
 
-Sedikit cerita, sekitar setahun yang lalu saya pernah membuat website yang bertujuan sangat bergantung pada animasi, tetapi saya belum mengenal tentang library animation jadi saya hanya menggunakan hook seperti useState, useEffect dan Asynchronous (setTimeout, setInterval). tetapi animasinya sangat clunky, dan tidak smooth. setelah menyadari itu saya mulai mencari dan belajar tentang library animasi terutama component carousel seperti Swiper.js, namun sayangnya saya menemui kendala performa seperti skor LCP (Largest Contentful Paint) yang menurun, nested slide dan fitur Lazy loading nya yang kurang optimal. Setelah melalui banyak pencarian akhirnya saya menemukan sebuah library animasi React yang menurut saya sesuai untuk kebutuhan saya yaitu Framer-motion. Nah di blog ini saya akan membagi pengalaman saya membuat carousel menggunakan Framer-motion yang tidak hanya smooth secara visual, tapi juga efisien secara performa.
+Sedikit cerita, sekitar setahun yang lalu saya pernah membuat website yang bertujuan sangat bergantung pada animasi, tetapi saya belum mengenal tentang library animation jadi saya hanya menggunakan hook seperti `useState`, `useEffect` dan Asynchronous (`setTimeout`, `setInterval`). tetapi animasinya sangat clunky, dan tidak smooth. setelah menyadari itu saya mulai mencari dan belajar tentang library animasi terutama component carousel seperti Swiper.js, namun sayangnya saya menemui kendala performa seperti skor LCP (Largest Contentful Paint) yang menurun, nested slide dan fitur Lazy loading nya yang kurang optimal. Setelah melalui banyak pencarian akhirnya saya menemukan sebuah library animasi React yang menurut saya sesuai untuk kebutuhan saya yaitu Framer-motion. Nah di blog ini saya akan membagi pengalaman saya membuat carousel menggunakan Framer-motion yang tidak hanya smooth secara visual, tapi juga efisien secara performa.
 <OptimizedImage src="https://res.cloudinary.com/duyurqj38/image/upload/f_auto,q_auto/v1/muniblog/blog_motion/performance_pjsk" alt="Performance_image" className={"mx-auto block rounded-md"}/>
 <Video src="https://res.cloudinary.com/duyurqj38/video/upload/f_auto:video,q_auto/v1/muniblog/blog_motion/demo_carousel" alt="Demo_Video_Interactive_Carousel" className={"mx-auto"}/>
 Jika ingin melihat langsung/testing [Carousel Website](https://www.munisekai-v2.vercel.app)
@@ -31,7 +32,7 @@ Di pembuatan carousel ini saya tidak menggunakan Framer-motion saja untuk perfor
 
 Lazy Loading adalah strategi untuk mengidentifikasikan resources yang dianggap tidak critical dan akan di load ketika dibutuhkan, Dikarenakan kemungkinan component carousel ini berat jadi teknik ini cocok untuk digunakan. dan yang kedua yaitu menaruh gambar kedalam cloud disini saya menggunakan [Cloudinary](https://www.cloudinary.com) sebagai SaaS nya, fungsi ini untuk membuat ukuran file gambar lebih kecil dibandingkan ukuran utamanya dengan cara mengubah format gambar menjadi Webp/Avif tanpa mengurangi kualitas gambar secara berlebih.
 
-Tools dan bahasa yang saya pakai adalah Tailwind dan Typescript
+Tools dan bahasa yang saya pakai adalah Tailwind, React dan Typescript
 
 ### First Step
 
@@ -225,9 +226,9 @@ function CharPagination() {
 }
 ```
 
-Disini dimana saya akan menjelaskan component motion. Untuk membaca element/value yang akan digunakan dalam animasi motion, motion menyediakan component `motion.elementHTML`. Di component ini ada 2 state yaitu `isHover` dan `isActive`. Pertama-tama kenapa kita tidak memakai hover yang disediakan oleh CSS?, alasan kenapa memakai state untuk hover karena hover menggunakan vanilla css tidak berfungsi pada touch device seperti mobile, tablet, dll. 
+Disini dimana saya akan menjelaskan component motion. Untuk membaca element/value yang akan digunakan dalam animasi motion, motion menyediakan component `motion.elementHTML`. Di component `CharPagination` ini ada 2 state yaitu `isHover` dan `isActive`. Pertama-tama kenapa kita tidak memakai hover yang disediakan oleh CSS?, alasan kenapa memakai state untuk hover karena hover menggunakan vanilla css tidak berfungsi pada touch device seperti mobile, tablet, dll. 
 
-Component motion menyediakan berbagai props dan event handler, disini saya akan membahas `animate` dan event handler on dan sejenisnya. Props `animate` adalah props untuk mengatur animasi di props tersebut, dan props on seperti `onHoverStart` dan `onHoverCancel` props yang akan firing ketika di hover dimulai dan saat keluar dari element tersebut sama seperti `onTapStart` dan `onTapCancel`.
+Component motion menyediakan berbagai props dan event handler, disini saya akan membahas `animate` dan beberapa event handler. Props `animate` adalah props untuk mengatur animasi di props tersebut, dan event handler seperti `onHoverStart` dan `onHoverCancel` event handler ini akan firing ketika hover dimulai dan saat keluar dari element tersebut sama seperti `onTapStart` dan `onTapCancel`.
 
 ### Fourth Step
 

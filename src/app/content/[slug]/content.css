@@ -16,6 +16,7 @@
 }
 .content-blog code:not(pre code) {
     background-color: rgb(73, 70, 70);
+    color:white;
     padding: 4px;
     border-radius: 4px;
 }
@@ -26,4 +27,7 @@
 .content-blog h3::before{
     content: "###";
     margin-right: 6px;
+}
+.content-blog p ,.content-blog ol{
+    color:#e6e4e4;
 }
