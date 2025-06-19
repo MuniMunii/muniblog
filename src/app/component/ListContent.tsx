@@ -22,7 +22,7 @@ export default function ListContent({content}:{content:contentProps[]}){
             <Link className='group-hover:underline text-2xl' href={`/content/${item.slug}`}>{item.title}</Link>
             <div className='mt-4'>
             <p className='select-none text-blue-400'>Description</p>
-            <p>{item.description}</p>
+            <p className='text-neutral-300'>{item.description}</p>
             </div>
             </div>
           </div>
