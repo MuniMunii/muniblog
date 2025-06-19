@@ -1,5 +1,5 @@
 export default function FooterComp(){
-    return <footer className="w-full border-t border-t-slate-500 text-neutral-300 bg-gradient-t from-[#000000] to-[#0e1f15] p-4 pb-0 flex flex-col justify-between items-center">
+    return <footer className="w-full h-fit border-t border-t-slate-500 text-neutral-300 bg-gradient-t from-[#000000] to-[#0e1f15] p-4 pb-0 flex flex-col justify-between items-center">
         <div className="flex-wrap flex gap-x-12 gap-y-2 justify-center select-none">
         <a href="https://muniporto.my.id" target="_blank"  className="hover:text-blue-400 transition duration-200">Portofolio</a>
         <a href="https://github/MuniMunii" target="_blank" className="hover:text-blue-400 transition duration-200">Github</a>

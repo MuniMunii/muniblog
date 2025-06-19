@@ -18,7 +18,9 @@
     --foreground: #ededed;
   }
 } */
-
+html{
+  min-height: 100vh;
+}
 body {
   scrollbar-gutter: stable both;
   background-color: black;
