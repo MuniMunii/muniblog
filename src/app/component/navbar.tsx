@@ -43,7 +43,7 @@ export default function Navbar() {
         className="mx-auto max-w-[1000px] h-full w-[90%] flex items-center justify-between"
         ref={navRef}
       >
-        <div className="text-2xl">MuniBlog</div>
+        <a href="/" className="text-2xl select-none cursor-pointer">MuniBlog</a>
         <div className="flex gap-2 relative">
           {indicator.width > 0 && !isMobile && (
             <motion.div

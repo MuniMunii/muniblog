@@ -1,6 +1,7 @@
 interface contentProps{
     id:string;
     metaTag:string,
+    keywords:string[]
     title:string;
     description:string
     slug:string

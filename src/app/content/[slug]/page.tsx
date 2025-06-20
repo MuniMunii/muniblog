@@ -22,7 +22,14 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
   const post =await getPost(slug)
   return {
     title:post?.frontmatter.title ?? "MuniBlog",
-    description:post.frontmatter.metaTag
+    description:post.frontmatter.metaTag,
+    keywords:post.frontmatter.keywords,
+    authors:[{name:'Ramzi Akbar Ramadhan | MuniBlog'}],
+    openGraph:{
+      title:post.frontmatter.title??"MuniBlog",
+      description:post.frontmatter.metaTag,
+      type:'article'
+    }
   }
 }
 export default async function ContentPage({
