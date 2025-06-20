@@ -82,7 +82,7 @@ export default function AboutContent() {
           {isOpen && (
             <motion.div
               key="felting-image"
-              className="mx-auto overflow-hidden"
+              className="mx-auto my-2 overflow-hidden"
               initial={{ height: 0, opacity: 0, y: 20 }}
               animate={{ height: "auto", opacity: 1, y: 0 }}
               exit={{ height: 0, opacity: 0, y: 20 }}
