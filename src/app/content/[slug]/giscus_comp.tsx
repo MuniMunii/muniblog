@@ -2,10 +2,11 @@
 import Giscus from "@giscus/react";
 export default function GiscusComp(){
 return <Giscus
+lang={'en'}
   id="comments"
   repo="MuniMunii/muniblog"
   repoId="R_kgDOO3wdqg"
-  category="comments"
+  category="Announcements"
   categoryId="DIC_kwDOO3wdqs4CrnNr"
   mapping="pathname"
   theme="dark_tritanopia"
@@ -13,5 +14,6 @@ return <Giscus
   emitMetadata="0"
   inputPosition="bottom"
   loading="lazy"
+  strict="1"
 />
 }

@@ -13,8 +13,7 @@ Dalam dunia pengembangan frontend, animasi pada antarmuka pengguna (UI) bukan la
 Sedikit cerita, sekitar setahun yang lalu saya pernah membuat website yang bertujuan sangat bergantung pada animasi, tetapi saya belum mengenal tentang library animation jadi saya hanya menggunakan hook seperti `useState`, `useEffect` dan Asynchronous (`setTimeout`, `setInterval`). tetapi animasinya sangat clunky, dan tidak smooth. setelah menyadari itu saya mulai mencari dan belajar tentang library animasi terutama component carousel seperti Swiper.js, namun sayangnya saya menemui kendala performa seperti skor LCP (Largest Contentful Paint) yang menurun, nested slide dan fitur Lazy loading nya yang kurang optimal. Setelah melalui banyak pencarian akhirnya saya menemukan sebuah library animasi React yang menurut saya sesuai untuk kebutuhan saya yaitu Framer-motion. Nah di blog ini saya akan membagi pengalaman saya membuat carousel menggunakan Framer-motion yang tidak hanya smooth secara visual, tapi juga efisien secara performa.
 <OptimizedImage src="https://res.cloudinary.com/duyurqj38/image/upload/f_auto,q_auto/v1/muniblog/blog_motion/performance_pjsk" alt="Performance_image" className={"mx-auto block rounded-md"}/>
 <Video src="https://res.cloudinary.com/duyurqj38/video/upload/f_auto:video,q_auto/v1/muniblog/blog_motion/demo_carousel" alt="Demo_Video_Interactive_Carousel" className={"mx-auto"}/>
-Jika ingin melihat langsung/testing [Carousel Website](https://www.munisekai-v2.vercel.app)
-## Setting up Framer-motion
+Jika ingin melihat langsung/testing [Carousel Website](https://munisekai-v2.vercel.app/)
 
 Untuk mensetup Framer-motion di project react, pertama harus menginstall Framer-motion di syntax dibawah ini.
 

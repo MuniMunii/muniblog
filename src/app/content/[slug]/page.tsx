@@ -64,7 +64,7 @@ export default async function ContentPage({
         <RevealContent content={content}/>
       </section>
       </article>
-      <GiscusComp/>
+      <GiscusComp key={slug}/>
     </main>
   );
 }

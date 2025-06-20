@@ -9,7 +9,6 @@ export async function getPost(slug: string):Promise<{content:string,frontmatter:
 }
 export function getAllPost():contentProps[] {
   const contentDir = path.join(process.cwd(), "src/app/lib");
-  console.log(contentDir)
   const files = fs.readdirSync(contentDir);
   return files
     .filter((filename) => filename.endsWith(".mdx"))
